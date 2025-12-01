@@ -1,24 +1,58 @@
-import logo from './logo.svg';
+
+// import Home from './pages/Home';
+// import Login from './pages/Login';
+// import './App.css';
+
+// function App() {
+//   return (
+//    <div className="App">
+//       <Home />
+//       <Login />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Dashboard from './pages/Dashboard'
+import Attendance from './pages/Attendance';
+import Feed from './pages/Feed';
+import Tasks from './pages/Tasks';
+import Documents from './pages/Documents';
+import Notifications from './pages/Notifications';
+import AdminPanel from './pages/AdminPanel'
+import Chat from './pages/Chat';
+
 import './App.css';
+import Schedule from './pages/Schedule';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+         {/* Dashboard Page */}
+        <Route path="/dashboard" element={<Dashboard />} />
+       <Route path="/attendance" element={<Attendance />} />
+       <Route path="/feed" element={<Feed />} />
+       <Route path="/task" element={<Tasks />} />
+       <Route path="/schedule" element={<Schedule />} />
+       <Route path="/documents" element={<Documents />} />
+       <Route path="/notifications" element={<Notifications />} />
+       <Route path="/chat" element={<Chat />} />
+       <Route path="/adminpanel" element={<AdminPanel />} />
+      
+      </Routes>
+     
+    </Router>
   );
 }
 

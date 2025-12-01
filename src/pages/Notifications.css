@@ -1,0 +1,205 @@
+/* src/pages/Notifications.css */
+
+.notif-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #F8FAFC;
+  min-height: 100vh;
+}
+
+/* --- Header --- */
+.notif-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.notif-header h2 {
+  margin: 0;
+  color: var(--secondary-color);
+  font-size: 1.8rem;
+}
+
+.notif-subtitle {
+  margin: 5px 0 0 0;
+  color: #64748B;
+  font-size: 0.9rem;
+}
+
+.header-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.notif-filters {
+  background: white;
+  padding: 4px;
+  border-radius: 20px;
+  border: 1px solid #E2E8F0;
+  display: flex;
+}
+
+.filter-pill {
+  background: none;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  color: #64748B;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-pill.active {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+}
+
+/* --- Notification List --- */
+.notif-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.notif-card {
+  display: flex;
+  align-items: flex-start;
+  background: white;
+  padding: 1.2rem;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.notif-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Unread State Style */
+.notif-card.unread {
+  background-color: #F0F9FF; /* Very light blue tint */
+  border-left: 4px solid var(--primary-color);
+}
+
+.unread-dot {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+}
+
+/* Icons */
+.notif-icon-box {
+  min-width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.type-blue { background-color: #DBEAFE; color: #2563EB; }   /* Tasks */
+.type-purple { background-color: #F3E8FF; color: #9333EA; } /* Meetings */
+.type-orange { background-color: #FFEDD5; color: #EA580C; } /* Announcements */
+.type-red { background-color: #FEE2E2; color: #DC2626; }    /* Security */
+.type-gray { background-color: #F1F5F9; color: #64748B; }   /* Default */
+
+/* Content */
+.notif-content {
+  flex-grow: 1;
+}
+
+.notif-top-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.notif-title {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--secondary-color);
+}
+
+.notif-time {
+  font-size: 0.75rem;
+  color: #94A3B8;
+  margin-right: 20px; /* Space for delete button */
+}
+
+.notif-text {
+  margin: 0 0 8px 0;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.notif-sender {
+  font-size: 0.75rem;
+  color: #64748B;
+  background: rgba(0,0,0,0.03);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Delete Button */
+.delete-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #CBD5E1;
+  cursor: pointer;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.2s;
+}
+
+.notif-card:hover .delete-btn {
+  opacity: 1; /* Show on hover */
+}
+
+.delete-btn:hover {
+  color: #EF4444;
+}
+
+/* Empty State */
+.empty-notif {
+  text-align: center;
+  padding: 3rem;
+  color: #94A3B8;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 10px;
+  opacity: 0.5;
+}

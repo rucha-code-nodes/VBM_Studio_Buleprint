@@ -1,0 +1,295 @@
+/* src/pages/Schedule.css */
+
+.schedule-layout {
+  display: flex;
+  height: calc(100vh - 80px); /* Full height minus navbar roughly */
+  background-color: var(--background-light);
+  overflow: hidden;
+}
+
+/* --- Left: Main Calendar --- */
+.calendar-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 2rem;
+  overflow-y: auto; /* Allow scrolling */
+}
+
+/* Header */
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.schedule-header h2 {
+  margin: 0;
+  color: var(--secondary-color);
+}
+
+.date-range {
+  margin: 5px 0 0 0;
+  color: #64748B;
+  font-size: 0.9rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.view-filters {
+  background: white;
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+  display: flex;
+}
+
+.filter-btn {
+  background: transparent;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #64748B;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.filter-btn.active {
+  background: white;
+  color: var(--primary-color);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  font-weight: 600;
+}
+
+.add-event-btn {
+  font-size: 0.9rem;
+  padding: 8px 16px;
+}
+
+/* --- The Grid --- */
+.calendar-grid {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+}
+
+/* Grid Header (Days) */
+.grid-header-row {
+  display: grid;
+  grid-template-columns: 80px repeat(5, 1fr); /* Time col + 5 days */
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.time-col-header {
+  border-right: 1px solid #F1F5F9;
+}
+
+.day-header {
+  text-align: center;
+  padding: 15px 0;
+  border-right: 1px solid #F1F5F9;
+}
+
+.day-header:last-child {
+  border-right: none;
+}
+
+.day-name {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #94A3B8;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.day-date {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.day-date.today {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 2px 5px rgba(37, 99, 235, 0.4);
+}
+
+/* Grid Body */
+.grid-body {
+  position: relative; /* For red line */
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.grid-row {
+  display: grid;
+  grid-template-columns: 80px repeat(5, 1fr);
+  min-height: 80px; /* Height of one hour slot */
+  border-bottom: 1px solid #F8FAFC;
+}
+
+.time-label {
+  font-size: 0.75rem;
+  color: #94A3B8;
+  text-align: right;
+  padding: 10px 10px 0 0;
+  border-right: 1px solid #F1F5F9;
+  position: relative;
+  top: -10px; /* Align text with the line */
+}
+
+.grid-cell {
+  border-right: 1px solid #F8FAFC;
+  padding: 4px;
+  position: relative;
+}
+
+/* --- Event Blocks (Notion Style) --- */
+.event-block {
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.event-block:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.event-title {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.event-time {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+/* Color Themes */
+.event-block.meeting {
+  background-color: #DBEAFE; /* Light Blue */
+  color: #1E40AF;
+  border-left-color: #2563EB;
+}
+
+.event-block.work {
+  background-color: #DCFCE7; /* Light Green */
+  color: #166534;
+  border-left-color: #16A34A;
+}
+
+.event-block.urgent {
+  background-color: #FEE2E2; /* Light Red */
+  color: #991B1B;
+  border-left-color: #DC2626;
+}
+
+.event-block.workshop {
+  background-color: #FEF3C7; /* Light Orange */
+  color: #92400E;
+  border-left-color: #D97706;
+}
+
+.event-block.break {
+  background-color: #F1F5F9; /* Grey */
+  color: #475569;
+  border: 1px dashed #CBD5E1;
+  text-align: center;
+}
+
+/* Current Time Line (Red Line) */
+.current-time-line {
+  position: absolute;
+  left: 80px; /* Start after time col */
+  right: 0;
+  height: 2px;
+  background-color: #EF4444;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.red-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #EF4444;
+  border-radius: 50%;
+  position: absolute;
+  left: -5px;
+  top: -4px;
+}
+
+/* --- Right Side Panel --- */
+.side-panel {
+  width: 300px;
+  background: white;
+  border-left: 1px solid #E2E8F0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.side-header h3 { margin: 0; font-size: 1.1rem; }
+.badge { font-size: 0.75rem; background: #F1F5F9; padding: 2px 8px; border-radius: 10px; }
+
+.mini-task-card {
+  background: white;
+  border: 1px solid #E2E8F0;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: all 0.2s;
+}
+
+.mini-task-card:hover {
+  border-color: var(--primary-color);
+}
+
+.task-row { display: flex; gap: 10px; font-size: 0.9rem; color: var(--text-dark); }
+.tag { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+.tag.red { color: #DC2626; }
+.tag.orange { color: #D97706; }
+.tag.blue { color: #2563EB; }
+
+.notes-box {
+  margin-top: auto;
+  background: #FFFBEB; /* Post-it yellow */
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #FCD34D;
+}
+
+.notes-box h4 { margin: 0 0 5px 0; color: #92400E; }
+.notes-box p { margin: 0; font-size: 0.85rem; color: #78350F; }

@@ -43,7 +43,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
        <Route path="/attendance" element={<Attendance />} />
        <Route path="/feed" element={<Feed />} />
-       <Route path="/task" element={<Tasks />} />
+       <Route path="/tasks" element={<Tasks />} />
        <Route path="/schedule" element={<Schedule />} />
        <Route path="/documents" element={<Documents />} />
        <Route path="/notifications" element={<Notifications />} />

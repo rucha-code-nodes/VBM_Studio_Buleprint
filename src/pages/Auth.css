@@ -714,3 +714,279 @@
 .google-icon {
   display: block;
 }
+
+
+/* src/pages/Auth.css */
+
+:root {
+  --primary-color: #2563EB;
+  --text-dark: #1E293B;
+  --text-muted: #64748B;
+  --bg-gradient-right: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+}
+
+/* --- Main Split Layout --- */
+.auth-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+/* LEFT SIDE (40%) - Form */
+.auth-left {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 4rem;
+  background-color: white;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* RIGHT SIDE (60%) - Team Showcase */
+.auth-right {
+  width: 60%;
+  background: var(--bg-gradient-right);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  position: relative;
+}
+
+/* --- Auth Box (Inside Left) --- */
+.auth-box {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.auth-header {
+  margin-bottom: 2rem;
+}
+
+.auth-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.auth-header h2 {
+  font-size: 2rem;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.auth-header p {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* Inputs & Forms */
+.input-group {
+  margin-bottom: 1.2rem;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s;
+  background-color: #F8FAFC;
+}
+
+.input-group input:focus {
+  border-color: var(--primary-color);
+  background-color: white;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 1rem;
+}
+
+.auth-btn:hover { background-color: #1d4ed8; }
+
+.google-btn {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.google-btn:hover { background-color: #F8FAFC; }
+
+.separator {
+  display: flex; align-items: center; text-align: center; color: #94A3B8; font-size: 0.85rem; margin: 1.5rem 0;
+}
+.separator::before, .separator::after { content: ''; flex: 1; border-bottom: 1px solid #E2E8F0; }
+.separator::before { margin-right: 10px; }
+.separator::after { margin-left: 10px; }
+
+.auth-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.link { color: var(--primary-color); text-decoration: none; font-weight: 600; cursor: pointer; }
+.link:hover { text-decoration: underline; }
+.link-btn { background: none; border: none; color: var(--primary-color); font-weight: 600; cursor: pointer; padding: 0; }
+
+/* Role Switcher */
+.role-switch-container {
+  display: flex;
+  background: #F1F5F9;
+  padding: 4px;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+.role-btn {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.role-btn.active {
+  background: white;
+  color: var(--primary-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* --- RIGHT SIDE CONTENT (Team Section) --- */
+.team-showcase {
+  text-align: center;
+  max-width: 800px;
+}
+
+.showcase-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #60A5FA, #A78BFA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+.showcase-desc {
+  font-size: 1.1rem;
+  color: #CBD5E1;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+/* Portrait Grid for Standing Rectangular Images */
+.employee-grid-portrait {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+.emp-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.emp-card:hover {
+  transform: translateY(-5px);
+}
+
+
+.emp-portrait {
+  width: 90px;
+  height: 120px; /* Portrait Ratio ~3:4 */
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.emp-initials {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.emp-info {
+  text-align: center;
+}
+
+.emp-name {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.emp-role {
+  display: block;
+  font-size: 0.75rem;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .auth-right { display: none; }
+  .auth-left { width: 100%; padding: 2rem; }
+}
+.emp-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* Ensures the image fills the box */
+  border-radius: 12px; /* Matches the portrait container shape */
+}

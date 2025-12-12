@@ -272,6 +272,7 @@ const Dashboard = () => {
   const handleFeedClick = () => window.location.href = '/feed';
   const handleDocument = () => window.location.href = '/documents';
   const handleChat = () => window.location.href = '/chat';
+  const haveFun = () => window.location.href = '/havefun';
 
   return (
     <div className="dashboard-layout">
@@ -344,6 +345,14 @@ const Dashboard = () => {
           <QuickCard 
             title="Team Chat" 
             value="Unread" 
+            icon="💬" 
+            className="card-chat"
+          />
+        </div>
+        <div className="card-wrapper" onClick={haveFun}>
+          <QuickCard 
+            title="Chill Zone" 
+            value="Let's have fun!" 
             icon="💬" 
             className="card-chat"
           />

@@ -1,0 +1,429 @@
+/* src/components/ChillZone.css */
+
+/* Modal Overlay */
+.chill-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85); /* Darker backdrop for focus */
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1200;
+  animation: fadeIn 0.3s ease;
+}
+
+.chill-modal-box {
+  background: #FFFFFF;
+  width: 650px;
+  padding: 2rem;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  color: #1E293B;
+  animation: slideUp 0.3s ease;
+  border: none;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* EXPANDED MODE for Games (Full Screen) */
+.chill-modal-box.expanded-mode {
+  width: 100vw;
+  height: 100vh;
+  max-height: none;
+  max-width: none;
+  border-radius: 0;
+  background: #F6FFF8; /* Mint Cream - Soothing BG */
+  padding: 2rem;
+}
+
+/* Header */
+.chill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px dashed #E2E8F0;
+  padding-bottom: 1rem;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Update header text color in expanded mode */
+.expanded-mode .chill-header h3 {
+  color: #354F52; /* Dark Slate */
+}
+
+.chill-header h3 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: #1E293B;
+}
+
+.badge-beta {
+  background: #DBEAFE;
+  color: #2563EB;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #94A3B8;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #EF4444;
+}
+
+/* Navigation */
+.chill-nav {
+  display: flex;
+  gap: 10px;
+  background: #FFFFFF;
+  padding: 5px;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  margin-bottom: 1.5rem;
+  flex-shrink: 0; /* Prevent nav from shrinking */
+}
+
+.nav-item {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #64748B;
+  transition: all 0.2s;
+}
+
+.nav-item:hover {
+  color: #6B9080;
+  background: rgba(107, 144, 128, 0.1);
+}
+
+.nav-item.active {
+  background: #EAF4F4;
+  color: #354F52;
+  box-shadow: none;
+}
+
+/* --- Content Area --- */
+.chill-content {
+  padding: 1rem;
+  overflow-y: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- SOOTHING GAME THEME --- */
+.section-games {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically in full screen */
+}
+
+.game-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.game-chip {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #E2E8F0;
+  background: white;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.game-chip.soothing {
+  background: #FFFFFF;
+  color: #6B9080;
+  border: 1px solid #A4C3B2;
+}
+
+.game-chip.soothing.active {
+  background: #6B9080;
+  color: white;
+  border-color: #5F8D4E;
+}
+
+.game-chip.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Container for the game itself - Modified to fill screen */
+.soothing-game-container {
+  background: rgba(255, 255, 255, 0.6); /* Slightly transparent */
+  padding: 2rem;
+  border-radius: 24px;
+  /* Removed fixed borders/shadows to feel more integrated */
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.soothing-status {
+  font-size: 2rem; /* Larger text */
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #354F52;
+  font-family: 'Georgia', serif;
+}
+
+/* Soothing Tic Tac Toe Grid */
+.soothing-tictactoe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 100px); /* Larger grid */
+  gap: 12px;
+  margin-bottom: 2.5rem;
+}
+
+.soothing-cell {
+  width: 100px;
+  height: 100px;
+  background: #FFFFFF;
+  border: 3px solid #A4C3B2;
+  border-radius: 16px;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #6B9080; /* Sage Green Text */
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 0 #A4C3B2;
+}
+
+.soothing-cell:hover {
+  background: #EAF4F4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #84A98C;
+}
+
+.soothing-cell:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 #84A98C;
+}
+
+.soothing-cell.X { color: #5F8D4E; } 
+.soothing-cell.O { color: #E07A5F; } /* Soft terracotta for O */
+
+.btn-soothing {
+  background: #6B9080;
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+  box-shadow: 0 6px 15px rgba(107, 144, 128, 0.3);
+}
+
+.btn-soothing:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: #5F8D4E;
+}
+
+/* Bubble Pop Soothing */
+.soothing-header {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: #354F52;
+  font-size: 1.5rem;
+}
+
+.btn-tiny-soothing {
+  background: #CCE3DE;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #354F52;
+  font-weight: 600;
+}
+
+.bubble-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 cols for more bubbles */
+  gap: 20px;
+  margin: 0 auto;
+}
+
+.bubble {
+  width: 70px; /* Larger bubbles */
+  height: 70px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  transition: transform 0.1s;
+  box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.bubble:active {
+  transform: scale(0.9);
+}
+
+.bubble.popped {
+  background-color: transparent !important;
+  box-shadow: none;
+  pointer-events: none;
+  color: #5F8D4E;
+}
+
+.soothing-hint {
+  color: #88A09E;
+  font-style: italic;
+  margin-top: 30px;
+  font-size: 1.1rem;
+}
+
+/* --- Existing Styles for other tabs --- */
+.section-relax, .section-fun, .section-leaderboard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.relax-card, .fun-widget, .challenge-box {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid #E2E8F0;
+}
+
+.relax-card h4, .meme-wall h4, .lb-header h4 {
+  margin: 0 0 1rem 0;
+  color: #1E293B;
+}
+
+/* Breathing */
+.breathing-circle-wrapper { display: flex; flex-direction: column; align-items: center; }
+.breathing-circle {
+  width: 100px; height: 100px; background: #A4C3B2;
+  border-radius: 50%; animation: breathe 5s infinite ease-in-out;
+  margin: 0 auto 1rem;
+}
+.breathe-instruction { font-weight: 600; color: #5F8D4E; }
+
+/* Music Player */
+.music-player { background: #F8FAFC; padding: 1rem; border-radius: 12px; }
+.track-info { display: flex; gap: 10px; align-items: center; margin-bottom: 1rem; }
+.music-icon { font-size: 1.5rem; }
+.track-details { display: flex; flex-direction: column; }
+.track-name { font-weight: 700; color: #1E293B; font-size: 0.95rem; }
+.track-status { font-size: 0.75rem; color: #64748B; }
+.player-controls { display: flex; justify-content: space-around; }
+.player-controls button {
+  background: white; border: 1px solid #E2E8F0; border-radius: 50%; width: 40px; height: 40px;
+  cursor: pointer; font-size: 1.2rem; transition: all 0.2s;
+}
+.player-controls button:hover { background: #EFF6FF; border-color: #2563EB; }
+
+/* Fun Corner */
+.ai-box { margin-bottom: 1.5rem; }
+.ai-avatar { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
+.ai-text { font-style: italic; color: #475569; font-size: 1.1rem; min-height: 60px; }
+.fun-buttons { display: flex; justify-content: center; gap: 10px; }
+.btn-fun { border: none; padding: 10px 20px; border-radius: 8px; color: white; font-weight: 600; cursor: pointer; transition: transform 0.2s; }
+.btn-fun:hover { transform: translateY(-2px); }
+.btn-fun.purple { background: #8B5CF6; }
+.btn-fun.blue { background: #3B82F6; }
+
+.meme-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.meme-card { background: white; padding: 15px; border-radius: 8px; border: 1px solid #E2E8F0; text-align: center; }
+.fact-card { grid-column: span 2; background: #FFF7ED; border-color: #FED7AA; text-align: left; }
+
+/* Leaderboard */
+.lb-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1rem; }
+.lb-subtitle { font-size: 0.8rem; color: #64748B; }
+.lb-table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; border: 1px solid #E2E8F0; }
+.lb-table th { background: #F8FAFC; padding: 12px; text-align: left; font-size: 0.85rem; color: #64748B; }
+.lb-table td { padding: 12px; border-bottom: 1px solid #F1F5F9; color: #1E293B; font-size: 0.9rem; }
+.gold { background: #FEF9C3 !important; }
+.silver { background: #F3F4F6 !important; }
+.bronze { background: #FFEDD5 !important; }
+
+.challenge-box { margin-top: 1.5rem; background: linear-gradient(135deg, #1E293B, #334155); color: white; padding: 1.2rem; border-radius: 12px; }
+.challenge-box h5 { margin: 0 0 5px 0; color: #FCD34D; }
+.progress-bar-bg { background: rgba(255,255,255,0.2); height: 6px; border-radius: 3px; margin-top: 10px; }
+.progress-bar-fill { background: #10B981; height: 100%; border-radius: 3px; }
+
+/* Zen Container (Standalone) */
+.zen-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+/* Animations */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.8); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pop {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}

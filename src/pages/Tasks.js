@@ -1,6 +1,7 @@
 /* src/pages/Tasks.js */
 import React, { useState } from 'react';
 import './Tasks.css';
+import BackButton from '../components/BackButton';
 
 const Tasks = () => {
   // State for Tabs (Pending | In Progress | Completed)
@@ -58,6 +59,7 @@ const Tasks = () => {
 
   return (
     <div className="tasks-container">
+      <BackButton />
       
       {/* --- Header --- */}
       <h2 className="page-title">My Tasks</h2>

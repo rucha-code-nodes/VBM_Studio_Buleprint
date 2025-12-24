@@ -1,6 +1,7 @@
 /* src/pages/Feed.js */
 import React, { useState } from 'react';
 import './Feed.css';
+import BackButton from '../components/BackButton';
 
 const Feed = () => {
   // Simulator for Admin Role (Change to false to hide the "Create" button)
@@ -47,6 +48,7 @@ const Feed = () => {
 
   return (
     <div className="feed-container">
+      <BackButton />
       
       {/* --- Top Button (Admin Only) --- */}
       {isAdmin && (

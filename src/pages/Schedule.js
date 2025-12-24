@@ -1,6 +1,7 @@
 /* src/pages/Schedule.js */
 import React, { useState } from 'react';
 import './Schedule.css';
+import BackButton from '../components/BackButton';
 
 const Schedule = () => {
   const [view, setView] = useState('Week'); // Day, Week, Month

@@ -107,6 +107,7 @@
 
 import React, { useState, useEffect } from 'react';
 import './Attendance.css';
+import BackButton from '../components/BackButton';
 
 const Attendance = () => {
   const [isCheckedIn, setIsCheckedIn] = useState(false);
@@ -147,6 +148,7 @@ const Attendance = () => {
 
   return (
     <div className="attendance-layout">
+      <BackButton />
       
       {/* --- Main Card: Punch Interface --- */}
       <div className="punch-card-container">

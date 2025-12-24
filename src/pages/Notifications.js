@@ -1,6 +1,7 @@
 /* src/pages/Notifications.js */
 import React, { useState } from 'react';
 import './Notifications.css';
+import BackButton from '../components/BackButton';
 
 const Notifications = () => {
   const [filter, setFilter] = useState('all'); // 'all' or 'unread'

@@ -1,6 +1,7 @@
 /* src/pages/Documents.js */
 import React, { useState } from 'react';
 import './Documents.css';
+import BackButton from '../components/BackButton';
 
 const Documents = () => {
   const [activeFolder, setActiveFolder] = useState('All Files');

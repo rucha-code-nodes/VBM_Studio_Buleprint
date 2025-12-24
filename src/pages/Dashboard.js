@@ -248,6 +248,7 @@
 /* src/pages/Dashboard.js */
 import React, { useState, useEffect } from 'react';
 import QuickCard from '../components/QuickCard';
+import BackButton from '../components/BackButton';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -275,6 +276,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-layout">
+      <BackButton />
       
       {/* --- Top Header Section --- */}
       <header className="dashboard-header">

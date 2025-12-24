@@ -243,6 +243,7 @@
 
 import React, { useState } from 'react';
 import './AdminPanel.css';
+import BackButton from '../components/BackButton';
 
 const AdminPanel = () => {
   const [activeTab, setActiveTab] = useState('employees'); 
@@ -560,6 +561,7 @@ const AdminPanel = () => {
 
   return (
     <div className="admin-layout">
+      <BackButton />
       
       {/* --- SIDEBAR --- */}
       <aside className="admin-sidebar">

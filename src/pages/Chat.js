@@ -1,6 +1,7 @@
 /* src/pages/Chat.js */
 import React, { useState, useEffect, useRef } from 'react';
 import './Chat.css';
+import BackButton from '../components/BackButton';
 
 const Chat = () => {
   const [activeChatId, setActiveChatId] = useState(1);
@@ -105,6 +106,7 @@ const Chat = () => {
 
   return (
     <div className="chat-layout">
+      <BackButton />
       
       {/* --- Left Side: Chat List --- */}
       <aside className="chat-sidebar">

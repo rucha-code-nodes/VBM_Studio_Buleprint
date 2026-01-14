@@ -16,7 +16,7 @@ const Feed = () => {
       time: "2 hours ago",
       title: "🎉 Annual Retreat Announcement!",
       description: "We are excited to announce that this year's company retreat will be held in Goa! Please check the attached itinerary for details.",
-      image: null, // No image for this one
+      image: null, 
       reactions: { like: 12, love: 5 },
       comments: [
         { user: "Rucha", text: "Wow, excited!" },
@@ -30,7 +30,7 @@ const Feed = () => {
       time: "5 hours ago",
       title: "System Maintenance Update",
       description: "The internal portal will be down for maintenance this Sunday from 2 AM to 4 AM. Please save your work.",
-      image: "maintenance-banner", // Placeholder for logic
+      image: "maintenance-banner", 
       reactions: { like: 4, love: 0 },
       comments: []
     }
@@ -53,10 +53,11 @@ const Feed = () => {
       {/* --- Top Button (Admin Only) --- */}
       {isAdmin && (
         <div className="create-post-card">
+          <div className="admin-avatar-placeholder" style={{width: '40px', height: '40px', fontSize: '1rem', margin: 0}}>A</div>
           <div className="create-input-fake">
-            <span className="placeholder-text">Post an announcement...</span>
+            Post an announcement...
           </div>
-          <button className="btn btn-primary">Create Announcement</button>
+          <button className="btn btn-primary">Post</button>
         </div>
       )}
 
@@ -84,7 +85,7 @@ const Feed = () => {
               {/* Image Preview Placeholder */}
               {post.image && (
                 <div className="post-media-placeholder">
-                   [ Image/Document Preview ]
+                   📷 Image Attachment
                 </div>
               )}
             </div>
@@ -92,16 +93,16 @@ const Feed = () => {
             {/* Reaction Bar */}
             <div className="post-actions">
               <button className="action-btn">
-                 👍 {post.reactions.like}
+                 <span>👍</span> {post.reactions.like}
               </button>
               <button className="action-btn">
-                 ❤️ {post.reactions.love}
+                 <span>❤️</span> {post.reactions.love}
               </button>
               <button 
                 className="action-btn comment-btn"
                 onClick={() => toggleComments(post.id)}
               >
-                 💬 Comments ({post.comments.length})
+                 <span>💬</span> {post.comments.length} Comments
               </button>
             </div>
 
@@ -111,12 +112,13 @@ const Feed = () => {
                 {post.comments.length > 0 ? (
                   post.comments.map((c, idx) => (
                     <div key={idx} className="comment-bubble">
-                      <strong>{c.user}: </strong> {c.text}
+                      <strong>{c.user}</strong> {c.text}
                     </div>
                   ))
                 ) : (
-                  <p className="no-comments">No comments yet.</p>
+                  <p className="no-comments">No comments yet. Be the first!</p>
                 )}
+                
                 {/* Input for new comment */}
                 <div className="comment-input-row">
                   <input type="text" placeholder="Write a comment..." />

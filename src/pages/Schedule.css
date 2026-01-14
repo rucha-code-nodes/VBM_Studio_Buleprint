@@ -1,9 +1,11 @@
-/* src/pages/Schedule.css */
+/* src/pages/Schedule.css - Virtual Verse Dark Theme */
 
 .schedule-layout {
   display: flex;
   height: calc(100vh - 80px); /* Full height minus navbar roughly */
-  background-color: var(--background-light);
+  
+  /* UPDATED: Main Black Background */
+  background-color: var(--bg-main);
   overflow: hidden;
 }
 
@@ -26,12 +28,12 @@
 
 .schedule-header h2 {
   margin: 0;
-  color: var(--secondary-color);
+  color: var(--text-main); /* White */
 }
 
 .date-range {
   margin: 5px 0 0 0;
-  color: #64748B;
+  color: var(--text-muted);
   font-size: 0.9rem;
 }
 
@@ -41,10 +43,11 @@
 }
 
 .view-filters {
-  background: white;
+  /* UPDATED: Dark Filter Container */
+  background: var(--bg-card);
   padding: 4px;
   border-radius: 8px;
-  border: 1px solid #E2E8F0;
+  border: 1px solid var(--border-color);
   display: flex;
 }
 
@@ -54,15 +57,22 @@
   padding: 6px 16px;
   border-radius: 6px;
   cursor: pointer;
-  color: #64748B;
+  color: var(--text-muted);
   font-weight: 500;
   font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  background-color: var(--bg-card-hover);
+  color: var(--text-main);
 }
 
 .filter-btn.active {
-  background: white;
-  color: var(--primary-color);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  /* UPDATED: Teal Active State */
+  background: var(--primary-color);
+  color: var(--primary-text); /* Black text */
+  box-shadow: 0 0 10px rgba(0, 178, 202, 0.3);
   font-weight: 600;
 }
 
@@ -73,10 +83,11 @@
 
 /* --- The Grid --- */
 .calendar-grid {
-  background: white;
+  /* UPDATED: Dark Grid Background */
+  background: var(--bg-card);
   border-radius: 12px;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -87,17 +98,17 @@
 .grid-header-row {
   display: grid;
   grid-template-columns: 80px repeat(5, 1fr); /* Time col + 5 days */
-  border-bottom: 1px solid #E2E8F0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .time-col-header {
-  border-right: 1px solid #F1F5F9;
+  border-right: 1px solid var(--border-color);
 }
 
 .day-header {
   text-align: center;
   padding: 15px 0;
-  border-right: 1px solid #F1F5F9;
+  border-right: 1px solid var(--border-color);
 }
 
 .day-header:last-child {
@@ -108,7 +119,7 @@
   display: block;
   font-size: 0.8rem;
   text-transform: uppercase;
-  color: #94A3B8;
+  color: var(--text-muted);
   font-weight: 700;
   margin-bottom: 5px;
 }
@@ -120,14 +131,15 @@
   line-height: 30px;
   border-radius: 50%;
   font-size: 1.1rem;
-  color: var(--secondary-color);
+  color: var(--text-main); /* White */
   font-weight: 600;
 }
 
 .day-date.today {
+  /* UPDATED: Teal Circle with Black Number */
   background-color: var(--primary-color);
-  color: white;
-  box-shadow: 0 2px 5px rgba(37, 99, 235, 0.4);
+  color: var(--primary-text);
+  box-shadow: 0 0 10px rgba(0, 178, 202, 0.4);
 }
 
 /* Grid Body */
@@ -141,26 +153,26 @@
   display: grid;
   grid-template-columns: 80px repeat(5, 1fr);
   min-height: 80px; /* Height of one hour slot */
-  border-bottom: 1px solid #F8FAFC;
+  border-bottom: 1px solid var(--border-color); /* Subtle lines */
 }
 
 .time-label {
   font-size: 0.75rem;
-  color: #94A3B8;
+  color: var(--text-muted);
   text-align: right;
   padding: 10px 10px 0 0;
-  border-right: 1px solid #F1F5F9;
+  border-right: 1px solid var(--border-color);
   position: relative;
   top: -10px; /* Align text with the line */
 }
 
 .grid-cell {
-  border-right: 1px solid #F8FAFC;
+  border-right: 1px solid var(--border-color);
   padding: 4px;
   position: relative;
 }
 
-/* --- Event Blocks (Notion Style) --- */
+/* --- Event Blocks (Neon Glass Style) --- */
 .event-block {
   padding: 8px 10px;
   border-radius: 6px;
@@ -169,12 +181,13 @@
   border-left: 3px solid transparent;
   cursor: pointer;
   transition: transform 0.2s;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .event-block:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  filter: brightness(1.2);
 }
 
 .event-title {
@@ -188,35 +201,35 @@
   opacity: 0.8;
 }
 
-/* Color Themes */
+/* Color Themes - Optimized for Dark Mode */
 .event-block.meeting {
-  background-color: #DBEAFE; /* Light Blue */
-  color: #1E40AF;
-  border-left-color: #2563EB;
+  background-color: rgba(0, 178, 202, 0.15); /* Teal Tint */
+  color: var(--primary-color);
+  border-left-color: var(--primary-color);
 }
 
 .event-block.work {
-  background-color: #DCFCE7; /* Light Green */
-  color: #166534;
-  border-left-color: #16A34A;
+  background-color: rgba(16, 185, 129, 0.15); /* Green Tint */
+  color: #34D399;
+  border-left-color: #10B981;
 }
 
 .event-block.urgent {
-  background-color: #FEE2E2; /* Light Red */
-  color: #991B1B;
-  border-left-color: #DC2626;
+  background-color: rgba(239, 68, 68, 0.15); /* Red Tint */
+  color: #F87171;
+  border-left-color: #EF4444;
 }
 
 .event-block.workshop {
-  background-color: #FEF3C7; /* Light Orange */
-  color: #92400E;
-  border-left-color: #D97706;
+  background-color: rgba(245, 158, 11, 0.15); /* Orange Tint */
+  color: #FBBF24;
+  border-left-color: #F59E0B;
 }
 
 .event-block.break {
-  background-color: #F1F5F9; /* Grey */
-  color: #475569;
-  border: 1px dashed #CBD5E1;
+  background-color: var(--bg-card-hover); /* Dark Grey */
+  color: var(--text-muted);
+  border: 1px dashed var(--border-color);
   text-align: center;
 }
 
@@ -226,9 +239,10 @@
   left: 80px; /* Start after time col */
   right: 0;
   height: 2px;
-  background-color: #EF4444;
+  background-color: #EF4444; /* Neon Red */
   z-index: 10;
   pointer-events: none;
+  box-shadow: 0 0 5px #EF4444;
 }
 
 .red-dot {
@@ -239,13 +253,15 @@
   position: absolute;
   left: -5px;
   top: -4px;
+  box-shadow: 0 0 5px #EF4444;
 }
 
 /* --- Right Side Panel --- */
 .side-panel {
   width: 300px;
-  background: white;
-  border-left: 1px solid #E2E8F0;
+  /* UPDATED: Dark Card */
+  background: var(--bg-card);
+  border-left: 1px solid var(--border-color);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -258,12 +274,19 @@
   margin-bottom: 20px;
 }
 
-.side-header h3 { margin: 0; font-size: 1.1rem; }
-.badge { font-size: 0.75rem; background: #F1F5F9; padding: 2px 8px; border-radius: 10px; }
+.side-header h3 { margin: 0; font-size: 1.1rem; color: var(--text-main); }
+.badge { 
+  font-size: 0.75rem; 
+  background: var(--bg-card-hover); 
+  padding: 2px 8px; 
+  border-radius: 10px; 
+  color: var(--text-muted);
+}
 
 .mini-task-card {
-  background: white;
-  border: 1px solid #E2E8F0;
+  /* UPDATED: Dark Inner Card */
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border-color);
   padding: 12px;
   border-radius: 8px;
   margin-bottom: 12px;
@@ -277,19 +300,20 @@
   border-color: var(--primary-color);
 }
 
-.task-row { display: flex; gap: 10px; font-size: 0.9rem; color: var(--text-dark); }
+.task-row { display: flex; gap: 10px; font-size: 0.9rem; color: var(--text-main); }
 .tag { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
-.tag.red { color: #DC2626; }
-.tag.orange { color: #D97706; }
-.tag.blue { color: #2563EB; }
+.tag.red { color: #F87171; }
+.tag.orange { color: #FBBF24; }
+.tag.blue { color: var(--primary-color); }
 
 .notes-box {
   margin-top: auto;
-  background: #FFFBEB; /* Post-it yellow */
+  /* Dark Yellow Tint */
+  background: rgba(245, 158, 11, 0.1); 
   padding: 15px;
   border-radius: 8px;
-  border: 1px solid #FCD34D;
+  border: 1px solid #B45309;
 }
 
-.notes-box h4 { margin: 0 0 5px 0; color: #92400E; }
-.notes-box p { margin: 0; font-size: 0.85rem; color: #78350F; }
+.notes-box h4 { margin: 0 0 5px 0; color: #FBBF24; }
+.notes-box p { margin: 0; font-size: 0.85rem; color: #D1D5DB; }

@@ -1,205 +1,275 @@
-/* src/pages/Notifications.css */
+/* src/pages/Notifications.css - Virtual Verse Dark Theme (Modernized) */
 
 .notif-container {
-  max-width: 800px;
+  max-width: 900px; /* Wider for modern look */
   margin: 0 auto;
-  padding: 2rem;
-  background-color: #F8FAFC;
+  padding: 3rem 2rem;
+  
+  /* Main Black Background */
+  background-color: var(--bg-main);
   min-height: 100vh;
 }
 
-/* --- Header --- */
+/* --- Modern Header --- */
 .notif-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #E2E8F0;
+  align-items: flex-start;
+  margin-bottom: 3rem;
 }
 
 .notif-header h2 {
   margin: 0;
-  color: var(--secondary-color);
-  font-size: 1.8rem;
+  color: var(--text-main);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
 
 .notif-subtitle {
-  margin: 5px 0 0 0;
-  color: #64748B;
-  font-size: 0.9rem;
+  margin: 8px 0 0 0;
+  color: var(--text-muted);
+  font-size: 1rem;
 }
 
+/* --- Header Actions & Filters --- */
 .header-actions {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 10px;
+  gap: 15px;
 }
 
 .btn-text {
   background: none;
   border: none;
   color: var(--primary-color);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
-  text-decoration: underline;
+  transition: opacity 0.2s;
 }
+.btn-text:hover { opacity: 0.8; text-decoration: underline; }
 
+/* Modern Segmented Control Filters */
 .notif-filters {
-  background: white;
-  padding: 4px;
-  border-radius: 20px;
-  border: 1px solid #E2E8F0;
+  background: var(--bg-card);
+  padding: 5px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
   display: flex;
+  gap: 5px;
 }
 
 .filter-pill {
-  background: none;
+  background: transparent;
   border: none;
-  padding: 6px 16px;
-  border-radius: 16px;
-  font-size: 0.85rem;
-  color: #64748B;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
+}
+
+.filter-pill:hover {
+  color: var(--text-main);
 }
 
 .filter-pill.active {
-  background-color: var(--primary-color);
-  color: white;
-  font-weight: 600;
+  /* Teal Active State with Shadow */
+  background-color: var(--bg-card-hover);
+  color: var(--primary-color);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border: 1px solid var(--border-color);
 }
 
 /* --- Notification List --- */
 .notif-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px; /* More breathing room */
 }
 
 .notif-card {
   display: flex;
   align-items: flex-start;
-  background: white;
-  padding: 1.2rem;
-  border-radius: 12px;
-  border: 1px solid #E2E8F0;
+  gap: 20px;
+  
+  /* Modern Card Style */
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  border-radius: 16px;
   position: relative;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
+  overflow: hidden;
 }
 
 .notif-card:hover {
-  transform: translateX(5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transform: translateY(-3px);
+  background-color: var(--bg-card-hover);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Deep shadow */
 }
 
 /* Unread State Style */
 .notif-card.unread {
-  background-color: #F0F9FF; /* Very light blue tint */
+  background: linear-gradient(to right, rgba(0, 178, 202, 0.05), var(--bg-card));
   border-left: 4px solid var(--primary-color);
 }
 
-.unread-dot {
+.notif-card.unread::after {
+  content: '';
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 8px;
-  height: 8px;
+  top: 20px; right: 20px;
+  width: 10px; height: 10px;
   background-color: var(--primary-color);
   border-radius: 50%;
+  box-shadow: 0 0 10px var(--primary-color); /* Glowing Dot */
 }
 
 /* Icons */
 .notif-icon-box {
-  min-width: 45px;
-  height: 45px;
-  border-radius: 10px;
+  min-width: 50px;
+  height: 50px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
-  margin-right: 15px;
+  font-size: 1.5rem;
   flex-shrink: 0;
+  transition: transform 0.2s;
 }
 
-.type-blue { background-color: #DBEAFE; color: #2563EB; }   /* Tasks */
-.type-purple { background-color: #F3E8FF; color: #9333EA; } /* Meetings */
-.type-orange { background-color: #FFEDD5; color: #EA580C; } /* Announcements */
-.type-red { background-color: #FEE2E2; color: #DC2626; }    /* Security */
-.type-gray { background-color: #F1F5F9; color: #64748B; }   /* Default */
+.notif-card:hover .notif-icon-box {
+  transform: scale(1.1);
+}
+
+/* Icon Colors using Theme Vars */
+.type-blue { 
+  background-color: rgba(0, 178, 202, 0.15); 
+  color: var(--primary-color); 
+  border: 1px solid rgba(0, 178, 202, 0.3);
+}
+.type-purple { 
+  background-color: rgba(147, 51, 234, 0.15); 
+  color: #a855f7; 
+  border: 1px solid rgba(147, 51, 234, 0.3);
+}
+.type-orange { 
+  background-color: rgba(234, 88, 12, 0.15); 
+  color: #f97316; 
+  border: 1px solid rgba(234, 88, 12, 0.3);
+}
+.type-red { 
+  background-color: rgba(220, 38, 38, 0.15); 
+  color: #ef4444; 
+  border: 1px solid rgba(220, 38, 38, 0.3);
+}
+.type-gray { 
+  background-color: var(--bg-card-hover); 
+  color: var(--text-muted); 
+  border: 1px solid var(--border-color);
+}
 
 /* Content */
 .notif-content {
   flex-grow: 1;
+  padding-right: 20px; /* Space for delete btn */
 }
 
 .notif-top-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 4px;
+  align-items: center;
+  margin-bottom: 6px;
 }
 
 .notif-title {
   margin: 0;
-  font-size: 1rem;
-  color: var(--secondary-color);
+  font-size: 1.1rem;
+  color: var(--text-main);
+  font-weight: 700;
 }
 
 .notif-time {
-  font-size: 0.75rem;
-  color: #94A3B8;
-  margin-right: 20px; /* Space for delete button */
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
 .notif-text {
-  margin: 0 0 8px 0;
-  color: var(--text-dark);
-  font-size: 0.9rem;
-  line-height: 1.4;
+  margin: 0 0 12px 0;
+  color: var(--text-muted); /* Grey */
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.notif-card:hover .notif-text {
+  color: #d1d5db; /* Lighten text on hover */
 }
 
 .notif-sender {
   font-size: 0.75rem;
-  color: #64748B;
-  background: rgba(0,0,0,0.03);
-  padding: 2px 6px;
-  border-radius: 4px;
+  color: var(--primary-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  background: rgba(0, 178, 202, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
 }
 
 /* Delete Button */
 .delete-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
+  top: 15px;
+  right: 15px;
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border-color);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
   font-size: 1.2rem;
-  color: #CBD5E1;
+  color: var(--text-muted);
   cursor: pointer;
-  opacity: 0; /* Hidden by default */
-  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; 
+  transition: all 0.2s;
+  transform: scale(0.8);
 }
 
 .notif-card:hover .delete-btn {
-  opacity: 1; /* Show on hover */
+  opacity: 1; 
+  transform: scale(1);
 }
 
 .delete-btn:hover {
+  background-color: rgba(220, 38, 38, 0.2);
   color: #EF4444;
+  border-color: #EF4444;
 }
 
 /* Empty State */
 .empty-notif {
   text-align: center;
-  padding: 3rem;
-  color: #94A3B8;
+  padding: 5rem;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border-radius: 16px;
+  border: 1px dashed var(--border-color);
 }
 
 .empty-icon {
-  font-size: 3rem;
+  font-size: 4rem;
   display: block;
-  margin-bottom: 10px;
-  opacity: 0.5;
+  margin-bottom: 15px;
+  opacity: 0.3;
+  color: var(--text-main);
 }

@@ -10,13 +10,13 @@ const Tasks = () => {
   // State for the Popup Modal
   const [selectedTask, setSelectedTask] = useState(null);
 
-  // Mock Data
+  // Mock Data (Same as before)
   const allTasks = [
     {
       id: 1,
       title: "Design Homepage UI",
       status: "In Progress",
-      progress: 60, // Percentage
+      progress: 60,
       deadline: "2025-10-15",
       assignedBy: "David Scott",
       description: "Create high-fidelity wireframes for the new homepage using the blue color palette.",
@@ -54,15 +54,13 @@ const Tasks = () => {
     }
   ];
 
-  // Filter tasks based on active tab
   const filteredTasks = allTasks.filter(task => task.status === activeTab);
 
   return (
     <div className="tasks-container">
       <BackButton />
       
-      {/* --- Header --- */}
-      <h2 className="page-title">My Tasks</h2>
+      <h2 className="page-title">Task Board</h2>
 
       {/* --- Tabs --- */}
       <div className="tabs-container">
@@ -77,26 +75,28 @@ const Tasks = () => {
         ))}
       </div>
 
-      {/* --- Task Cards Grid --- */}
+      {/* --- Tasks Grid --- */}
       <div className="tasks-grid">
         {filteredTasks.length > 0 ? (
           filteredTasks.map(task => (
             <div 
               key={task.id} 
               className="task-card" 
-              onClick={() => setSelectedTask(task)} // Click to open popup
+              onClick={() => setSelectedTask(task)}
             >
-              {/* Task Title */}
+              <div className="task-header">
+                <span className={`status-badge ${task.status.toLowerCase().replace(' ', '-')}`}>
+                  {task.status}
+                </span>
+              </div>
+              
               <h3 className="task-title">{task.title}</h3>
               
-              {/* Status Badge */}
-              <span className={`status-badge ${task.status.toLowerCase().replace(' ', '-')}`}>
-                {task.status}
-              </span>
-
-              {/* Progress Bar */}
               <div className="progress-container">
-                <div className="progress-label">Progress</div>
+                <div className="progress-header">
+                  <span>Progress</span>
+                  <span>{task.progress}%</span>
+                </div>
                 <div className="progress-track">
                   <div 
                     className="progress-fill" 
@@ -105,19 +105,18 @@ const Tasks = () => {
                 </div>
               </div>
 
-              {/* Footer Info */}
               <div className="task-footer">
                 <div className="task-meta">
                   <span>📅 {task.deadline}</span>
                 </div>
                 <div className="task-assignee">
-                  <small>By: {task.assignedBy}</small>
+                  <span>👤 {task.assignedBy}</span>
                 </div>
               </div>
             </div>
           ))
         ) : (
-          <p className="no-tasks">No tasks found in this category.</p>
+          <div className="no-tasks">No tasks found in this category.</div>
         )}
       </div>
 
@@ -127,30 +126,47 @@ const Tasks = () => {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             
             <div className="modal-header">
-              <h3>{selectedTask.title}</h3>
+              <div>
+                <span className="modal-section-title">Task Details</span>
+                <h3>{selectedTask.title}</h3>
+              </div>
               <button className="close-btn" onClick={() => setSelectedTask(null)}>×</button>
             </div>
 
             <div className="modal-body">
-              <p className="modal-description"><strong>Description:</strong><br/>{selectedTask.description}</p>
+              <span className="modal-section-title">Description</span>
+              <p className="modal-description">{selectedTask.description}</p>
               
-              <div className="modal-files">
-                <strong>Attached Files:</strong>
+              <div className="modal-files-section">
+                <span className="modal-section-title">Attachments</span>
                 {selectedTask.files.length > 0 ? (
-                  <ul>
+                  <ul className="modal-files">
                     {selectedTask.files.map((file, index) => (
                       <li key={index}>📎 {file}</li>
                     ))}
                   </ul>
                 ) : (
-                  <p className="text-muted">No files attached.</p>
+                  <p className="text-muted" style={{fontStyle: 'italic', fontSize: '0.9rem', color: 'var(--text-muted)'}}>No files attached.</p>
                 )}
               </div>
               
-              <div className="modal-meta">
-                <p><strong>Deadline:</strong> {selectedTask.deadline}</p>
-                <p><strong>Assigned By:</strong> {selectedTask.assignedBy}</p>
-                <p><strong>Status:</strong> {selectedTask.status}</p>
+              <div className="modal-grid">
+                <div className="info-item">
+                  <label>Deadline</label>
+                  <span>{selectedTask.deadline}</span>
+                </div>
+                <div className="info-item">
+                  <label>Assigned By</label>
+                  <span>{selectedTask.assignedBy}</span>
+                </div>
+                <div className="info-item">
+                  <label>Current Status</label>
+                  <span style={{color: 'var(--primary-color)'}}>{selectedTask.status}</span>
+                </div>
+                <div className="info-item">
+                  <label>Progress</label>
+                  <span>{selectedTask.progress}%</span>
+                </div>
               </div>
             </div>
 

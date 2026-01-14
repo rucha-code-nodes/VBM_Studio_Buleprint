@@ -1,4 +1,4 @@
-/* BackButton.css - updated for modern site style and mobile safe-area */
+/* BackButton.css - Virtual Verse Dark Theme */
 
 .back-btn-circle {
   position: fixed;
@@ -7,17 +7,27 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(16, 24, 40, 0.06);
-  color: #111827;
+  
+  /* UPDATED: Dark background matching your theme variables */
+  background: rgba(20, 20, 20, 0.85); 
+  
+  /* UPDATED: Subtle border */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* UPDATED: Icon is now the Logo Teal */
+  color: var(--primary-color);
+  
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
-  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.08);
+  
+  /* UPDATED: Shadow is now darker with a tiny hint of teal glow */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  
   z-index: 9999;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
 }
 
 .back-btn-circle svg {
@@ -28,8 +38,13 @@
 
 .back-btn-circle:hover {
   transform: translateY(-1px) scale(1.04);
-  box-shadow: 0 10px 22px rgba(17, 24, 39, 0.12);
-  background: rgba(255, 255, 255, 1);
+  
+  /* UPDATED: Slightly lighter dark background on hover */
+  background: #1A1A1A; 
+  
+  /* UPDATED: Teal Glow on hover */
+  box-shadow: 0 0 15px rgba(0, 178, 202, 0.3);
+  border-color: var(--primary-color);
 }
 
 .back-btn-circle:active {
@@ -38,7 +53,8 @@
 
 .back-btn-circle:focus {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+  /* UPDATED: Focus ring is now Teal */
+  box-shadow: 0 0 0 2px var(--primary-color);
 }
 
 @media (max-width: 480px) {

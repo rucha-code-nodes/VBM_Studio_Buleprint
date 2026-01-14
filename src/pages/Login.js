@@ -2,17 +2,19 @@
 
 
 
-
 // /* src/pages/Login.js */
 // import React, { useState } from 'react';
 // import './Auth.css';
 // import BackButton from '../components/BackButton';
-// // import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom'; // Fixed: Uncommented this
 
 // const Login = () => {
 //   const [email, setEmail] = useState('');
 //   const [password, setPassword] = useState('');
   
+//   // Initialize the navigation hook
+//   const navigate = useNavigate();
+
 //   // OTP Flow States
 //   const [otp, setOtp] = useState('');
 //   const [newPassword, setNewPassword] = useState('');
@@ -27,16 +29,23 @@
 //   const handleLogin = (e) => {
 //     e.preventDefault();
 //     console.log(`Logging in as ${role} with:`, email, password);
+    
+//     // Save role to local storage
 //     localStorage.setItem('userRole', role);
+    
+//     // Fixed: Using React Router navigation instead of browser reload
 //     if (role === 'admin') {
-//       window.location.href = '/adminpanel'; 
+//       navigate('/adminpanel'); 
 //     } else {
-//       window.location.href = '/dashboard';
+//       navigate('/dashboard');
 //     }
 //   };
 
 //   const handleGoogleLogin = () => {
 //     console.log("Initiating Google Login...");
+//     // For demo purposes, just navigate to dashboard
+//     localStorage.setItem('userRole', 'employee');
+//     navigate('/dashboard');
 //   };
 
 //   // Reset Flow Handlers
@@ -69,7 +78,6 @@
 //     { name: "Marcus Johnson", role: "Backend Engineer", img: "https://randomuser.me/api/portraits/men/86.jpg" },
 //     { name: "Priya Patel", role: "DevOps Engineer", img: "https://randomuser.me/api/portraits/women/29.jpg" },
 //     { name: "Tom Baker", role: "QA Specialist", img: "https://randomuser.me/api/portraits/men/11.jpg" },
-   
 //   ];
 
 //   return (
@@ -147,7 +155,7 @@
 //             </div>
 
 //             <button type="button" className="google-btn" onClick={handleGoogleLogin}>
-//               {/* Added Google SVG Icon below */}
+//               {/* Google SVG Icon */}
 //               <svg className="google-icon" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
 //                 <g transform="matrix(1, 0, 0, 1, 27.009001, -39.238998)">
 //                   <path fill="#4285F4" d="M -3.264 51.509 C -3.264 50.719 -3.334 49.969 -3.454 49.239 L -14.754 49.239 L -14.754 53.749 L -8.284 53.749 C -8.574 55.229 -9.424 56.479 -10.684 57.329 L -10.684 60.329 L -6.824 60.329 C -4.564 58.239 -3.264 55.159 -3.264 51.509 Z" />
@@ -165,7 +173,7 @@
 //           </>
 //         )}
 
-//         {/* Forgot Password Views (Simplified for brevity, uses same blue styling) */}
+//         {/* Forgot Password Views */}
 //         {view === 'forgot-password' && (
 //           <>
 //             <div className="auth-header">
@@ -225,38 +233,29 @@
 
 
 
+
 /* src/pages/Login.js */
 import React, { useState } from 'react';
 import './Auth.css';
 import BackButton from '../components/BackButton';
-import { useNavigate } from 'react-router-dom'; // Fixed: Uncommented this
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
-  // Initialize the navigation hook
   const navigate = useNavigate();
 
   // OTP Flow States
   const [otp, setOtp] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-
-  const [role, setRole] = useState('employee'); // Default role
-  
-  // View State
+  const [role, setRole] = useState('employee');
   const [view, setView] = useState('login'); 
-  
-  // Login Handler
+
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(`Logging in as ${role} with:`, email, password);
-    
-    // Save role to local storage
+    console.log(`Logging in as ${role} with:`, email);
     localStorage.setItem('userRole', role);
-    
-    // Fixed: Using React Router navigation instead of browser reload
     if (role === 'admin') {
       navigate('/adminpanel'); 
     } else {
@@ -265,17 +264,14 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    console.log("Initiating Google Login...");
-    // For demo purposes, just navigate to dashboard
     localStorage.setItem('userRole', 'employee');
     navigate('/dashboard');
   };
 
-  // Reset Flow Handlers
   const handleSendOtp = (e) => {
     e.preventDefault();
     if (!email) { alert("Please enter your email."); return; }
-    alert(`OTP sent to ${email} (Check console/demo for '1234')`);
+    alert(`OTP sent to ${email}`);
     setView('verify-otp'); 
   };
 
@@ -290,10 +286,8 @@ const Login = () => {
     if (newPassword !== confirmPassword) { alert("Passwords do not match!"); return; }
     alert("Password reset successfully!");
     setView('login');
-    setOtp(''); setNewPassword(''); setConfirmPassword('');
   };
 
-  // Dummy Team Data
   const teamMembers = [
     { name: "Sarah Jenkins", role: "Frontend Lead", img: "https://randomuser.me/api/portraits/women/44.jpg" },
     { name: "David Kim", role: "Product Manager", img: "https://randomuser.me/api/portraits/men/32.jpg" },
@@ -326,7 +320,7 @@ const Login = () => {
         </div>
       </div>
 
-      {/* --- RIGHT SIDE: Form (Blue) --- */}
+      {/* --- RIGHT SIDE: Form --- */}
       <div className="auth-form-side">
         <div className="back-button-wrapper">
             <BackButton />
@@ -378,7 +372,6 @@ const Login = () => {
             </div>
 
             <button type="button" className="google-btn" onClick={handleGoogleLogin}>
-              {/* Google SVG Icon */}
               <svg className="google-icon" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
                 <g transform="matrix(1, 0, 0, 1, 27.009001, -39.238998)">
                   <path fill="#4285F4" d="M -3.264 51.509 C -3.264 50.719 -3.334 49.969 -3.454 49.239 L -14.754 49.239 L -14.754 53.749 L -8.284 53.749 C -8.574 55.229 -9.424 56.479 -10.684 57.329 L -10.684 60.329 L -6.824 60.329 C -4.564 58.239 -3.264 55.159 -3.264 51.509 Z" />
@@ -396,7 +389,6 @@ const Login = () => {
           </>
         )}
 
-        {/* Forgot Password Views */}
         {view === 'forgot-password' && (
           <>
             <div className="auth-header">

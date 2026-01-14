@@ -32,9 +32,9 @@ const Navbar = ({ showBackButton = true }) => {
         <Link to="/apply">
           <button className="btn btn-ghost">Apply Now</button>
         </Link>
-        <Link to="/signup">
+        {/* <Link to="/signup">
           <button className="btn btn-ghost">Create Account</button>
-        </Link>
+        </Link> */}
         <Link to="/login">
           <button className="btn btn-primary-gradient">Login</button>
         </Link>

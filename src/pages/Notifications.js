@@ -89,15 +89,16 @@ const Notifications = () => {
 
   return (
     <div className="notif-container">
+      <BackButton />
       
       {/* Header */}
       <div className="notif-header">
         <div>
           <h2>Notifications</h2>
-          <p className="notif-subtitle">You have {notifications.filter(n => n.isUnread).length} unread messages</p>
+          <p className="notif-subtitle">You have <strong style={{color: 'var(--primary-color)'}}>{notifications.filter(n => n.isUnread).length}</strong> unread messages</p>
         </div>
+        
         <div className="header-actions">
-          <button className="btn-text" onClick={markAllAsRead}>Mark all as read</button>
           <div className="notif-filters">
             <button 
               className={`filter-pill ${filter === 'all' ? 'active' : ''}`}
@@ -112,6 +113,7 @@ const Notifications = () => {
               Unread
             </button>
           </div>
+          <button className="btn-text" onClick={markAllAsRead}>Mark all as read</button>
         </div>
       </div>
 
@@ -127,9 +129,6 @@ const Notifications = () => {
                 className={`notif-card ${notif.isUnread ? 'unread' : ''}`}
                 onClick={() => markAsRead(notif.id)}
               >
-                {/* Unread Dot */}
-                {notif.isUnread && <div className="unread-dot"></div>}
-
                 {/* Icon */}
                 <div className={`notif-icon-box ${colorClass}`}>
                   {icon}
@@ -142,7 +141,7 @@ const Notifications = () => {
                     <span className="notif-time">{notif.time}</span>
                   </div>
                   <p className="notif-text">{notif.text}</p>
-                  <span className="notif-sender">From: {notif.sender}</span>
+                  <span className="notif-sender">{notif.sender}</span>
                 </div>
 
                 {/* Delete Action (Hover) */}
@@ -159,7 +158,8 @@ const Notifications = () => {
         ) : (
           <div className="empty-notif">
             <span className="empty-icon">🔕</span>
-            <p>No notifications found.</p>
+            <h3>All caught up!</h3>
+            <p>You have no new notifications at this moment.</p>
           </div>
         )}
       </div>

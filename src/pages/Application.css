@@ -1,8 +1,10 @@
-/* Application.css */
+/* Application.css - Virtual Verse Dark Theme */
 
 .application-container {
   font-family: 'Inter', 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+  
+  /* UPDATED: Main Black Background */
+  background: var(--bg-main);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -14,12 +16,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 5%;
-  background: rgba(255, 255, 255, 0.85);
+  
+  /* UPDATED: Dark Glass Navbar */
+  background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .logo {
@@ -38,7 +42,8 @@
 .logo-text {
   font-size: 1.4rem;
   font-weight: 800;
-  color: #2563EB;
+  /* UPDATED: White Text */
+  color: var(--text-main);
   letter-spacing: -0.5px;
 }
 
@@ -50,7 +55,7 @@
 
 .btn {
   padding: 10px 24px;
-  border-radius: 8px;
+  border-radius: 4px;
   font-weight: 600;
   cursor: pointer;
   border: none;
@@ -60,23 +65,23 @@
 
 .btn-ghost {
   background: transparent;
-  color: #64748B;
+  color: var(--text-muted);
 }
 
 .btn-ghost:hover {
-  color: #2563EB;
-  background: #EFF6FF;
+  color: var(--primary-color);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .btn-primary-gradient {
-  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
-  color: white;
-  box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+  color: var(--primary-text); /* Black Text */
+  box-shadow: 0 4px 6px rgba(0, 178, 202, 0.2);
 }
 
 .btn-primary-gradient:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 8px 15px rgba(0, 178, 202, 0.3);
 }
 
 /* Application Section */
@@ -89,9 +94,13 @@
 }
 
 .form-wrapper {
-  background: white;
+  /* UPDATED: Dark Glass Card */
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   padding: 3rem;
   max-width: 600px;
   width: 100%;
@@ -104,14 +113,14 @@
 
 .form-header h1 {
   font-size: 2.5rem;
-  color: #0F172A;
+  color: var(--text-main); /* White */
   margin-bottom: 0.5rem;
   font-weight: 800;
 }
 
 .form-header p {
   font-size: 1.1rem;
-  color: #64748B;
+  color: var(--text-muted);
 }
 
 /* Form Styles */
@@ -129,27 +138,30 @@
 
 .form-group label {
   font-weight: 600;
-  color: #0F172A;
+  color: var(--text-main);
   font-size: 0.95rem;
 }
 
 .form-group input,
 .form-group textarea {
   padding: 12px 16px;
-  border: 1px solid #E2E8F0;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
   transition: all 0.2s ease;
-  background: #F8FAFC;
+  
+  /* UPDATED: Dark Input Fields */
+  background: var(--bg-card-hover);
+  color: var(--text-main);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #2563EB;
-  background: white;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  border-color: var(--primary-color);
+  background: #000000;
+  box-shadow: 0 0 0 3px rgba(0, 178, 202, 0.2);
 }
 
 .form-group textarea {
@@ -160,6 +172,8 @@
 .form-group input[type="file"] {
   padding: 10px;
   cursor: pointer;
+  background: var(--bg-card);
+  color: var(--text-muted);
 }
 
 /* Submit Button */
@@ -168,6 +182,8 @@
   padding: 14px 32px;
   font-size: 1.05rem;
   border: none;
+  background-color: var(--primary-color);
+  color: var(--primary-text);
 }
 
 .submit-btn:active {
@@ -178,21 +194,24 @@
 .success-message {
   text-align: center;
   padding: 3rem 2rem;
-  background: #F0FDF4;
+  
+  /* UPDATED: Dark Green Success Card */
+  background: rgba(22, 163, 74, 0.1);
   border: 2px solid #16A34A;
+  
   border-radius: 12px;
   animation: slideDown 0.4s ease-out;
 }
 
 .success-message h2 {
-  color: #16A34A;
+  color: #22c55e; /* Brighter Green for Dark Mode */
   font-size: 1.8rem;
   margin-bottom: 1rem;
   font-weight: 800;
 }
 
 .success-message p {
-  color: #15803D;
+  color: #4ade80;
   font-size: 1rem;
 }
 
@@ -209,7 +228,10 @@
 
 /* Footer */
 .footer {
-  background: #0F172A;
+  /* UPDATED: Dark Card Background */
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+  
   color: white;
   padding: 3rem 8%;
   margin-top: auto;
@@ -224,17 +246,17 @@
 .logo-text-white {
   font-size: 1.4rem;
   font-weight: 800;
-  color: white;
+  color: var(--primary-color); /* Teal Logo in Footer */
 }
 
 .footer-brand p {
-  color: #94A3B8;
+  color: var(--text-muted);
   margin-top: 0.5rem;
   font-size: 0.9rem;
 }
 
 .footer-links a {
-  color: #CBD5E1;
+  color: var(--text-muted);
   text-decoration: none;
   margin-left: 2rem;
   transition: color 0.2s;
@@ -242,7 +264,7 @@
 }
 
 .footer-links a:hover {
-  color: white;
+  color: var(--primary-color);
 }
 
 /* Mobile Responsive */

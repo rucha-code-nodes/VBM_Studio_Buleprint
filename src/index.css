@@ -1,48 +1,195 @@
 /* src/index.css */
 :root {
-  /* Theme Colors */
-  --primary-color: #2563EB;   /* Professional Blue */
-  --secondary-color: #1E293B; /* Dark Slate (Text/Footer) */
-  --accent-color: #3B82F6;    /* Lighter Blue for gradients */
-  --background-light: #F8FAFC;/* Very light grey-blue background */
-  --text-dark: #334155;       /* Readable dark grey */
-  --white: #ffffff;
+  /* --- VIRTUAL VERSE DARK THEME --- */
+  
+  /* 1. Backgrounds */
+  --bg-main: #000000;       /* Pure Black */
+  --bg-card: #111111;       /* Very Dark Grey */
+  --bg-card-hover: #1A1A1A; /* Slightly lighter */
+  
+  /* 2. Primary Brand Color (Teal) */
+  --primary-color: #00B2CA; 
+  --primary-hover: #22D3EE; /* Brighter Cyan */
+  --primary-text: #000000;  /* Black text on Teal */
+
+  /* 3. Text Colors */
+  --text-main: #FFFFFF;     /* White */
+  --text-muted: #94A3B8;    /* Grey */
+  --text-highlight: #00B2CA;/* Teal */
+
+  /* 4. Borders & Accents */
+  --border-color: #333333; 
+  --shadow-color: rgba(0, 178, 202, 0.15); 
+}
+
+/* --- Global Resets & Responsive Basics --- */
+html {
+  font-size: 16px; /* Base font size */
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--background-light);
-  color: var(--text-dark);
+  font-family: 'Segoe UI', 'Inter', sans-serif;
+  background-color: var(--bg-main) !important;
+  color: var(--text-main) !important;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* Prevents horizontal scrolling on mobile */
+  line-height: 1.6;
 }
 
 * {
   box-sizing: border-box;
 }
 
-/* Button Styles */
-.btn {
-  padding: 10px 24px;
-  border-radius: 6px;
-  font-weight: 600;
+/* --- Responsive Images & Media --- */
+/* This makes sure NO image ever breaks your mobile layout */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- Global Elements --- */
+
+/* Buttons */
+.btn-primary, button[type="submit"] {
+  background-color: var(--primary-color) !important;
+  color: var(--primary-text) !important;
+  font-weight: 700 !important;
+  border: none !important;
+  border-radius: 6px !important; 
+  padding: 12px 24px;
   cursor: pointer;
-  border: none;
+  transition: all 0.3s ease;
   font-size: 1rem;
-  transition: all 0.2s ease;
 }
 
-.btn-primary {
-  background-color: var(--primary-color);
-  color: var(--white);
-}
-
-.btn-outline {
-  background-color: transparent;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-}
-
-.btn:hover {
-  opacity: 0.9;
+.btn-primary:hover, button[type="submit"]:hover {
+  background-color: var(--primary-hover) !important;
+  box-shadow: 0 0 15px var(--primary-color);
   transform: translateY(-2px);
+}
+
+/* Outline Buttons */
+.btn-outline {
+  background: transparent !important;
+  border: 1px solid var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  background: var(--primary-color) !important;
+  color: var(--primary-text) !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-main) !important;
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+/* --- Custom Scrollbar (Dark Theme) --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* =========================================
+   REAL WEBSITE RESPONSIVE BREAKPOINTS
+   ========================================= */
+
+/* Desktop / Large Screens */
+@media (min-width: 1440px) {
+  html {
+    font-size: 18px; /* Slightly larger text for big monitors */
+  }
+}
+
+/* Tablet & Mobile (Max width 1024px) */
+@media (max-width: 1024px) {
+  html {
+    font-size: 15px; /* Slightly smaller text globally */
+  }
+  
+  .container {
+    padding: 0 20px;
+  }
+}
+
+/* Mobile Devices (Max width 768px) */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* Smaller text for mobile */
+  }
+
+  /* Make headings smaller so they don't break lines awkwardly */
+  h1 { font-size: 2rem !important; }
+  h2 { font-size: 1.7rem !important; }
+  h3 { font-size: 1.4rem !important; }
+
+  /* Stack flex containers vertically by default if they have the class 'flex-responsive' */
+  .flex-responsive {
+    flex-direction: column !important;
+  }
+
+  /* Buttons easier to tap */
+  .btn-primary, button, .btn-outline {
+    padding: 14px 20px; /* Larger touch target */
+    width: 100%; /* Full width buttons on mobile usually look better */
+    text-align: center;
+    display: block;
+  }
+  
+  /* Reset margins for mobile layout */
+  .auth-page-wrapper, .dashboard-layout {
+    flex-direction: column;
+    height: auto; /* Allow scrolling */
+  }
+  
+  /* Improve card spacing on mobile */
+  .card, .auth-box, .team-member-card {
+    margin-bottom: 20px;
+  }
+}
+
+/* Small Mobile (Max width 480px) */
+@media (max-width: 480px) {
+  body {
+    padding-bottom: 20px; /* Space at bottom for scrolling */
+  }
+
+  h1 { font-size: 1.6rem !important; }
+  
+  /* Ensure padding isn't too huge on small screens */
+  .auth-form-side, .auth-image-side {
+    padding: 1.5rem 1rem !important; 
+  }
+  
+  /* Ensure inputs are easy to tap */
+  input, select, textarea {
+    font-size: 16px !important; /* Prevents zoom on iOS inputs */
+  }
 }

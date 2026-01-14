@@ -1,3 +1,5 @@
+/* src/App.css - Virtual Verse Dark Theme */
+
 .App {
   text-align: center;
 }
@@ -14,18 +16,23 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* UPDATED: Main Black Background */
+  background-color: var(--bg-main);
+  
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  
+  /* UPDATED: White Text */
+  color: var(--text-main);
 }
 
 .App-link {
-  color: #61dafb;
+  /* UPDATED: Teal Link Color */
+  color: var(--primary-color);
 }
 
 @keyframes App-logo-spin {

@@ -1,110 +1,4 @@
-// /* src/pages/Attendance.js */
-// import React, { useState } from 'react';
-// import './Attendance.css';
-
-// const Attendance = () => {
-//   // State to track status
-//   const [isCheckedIn, setIsCheckedIn] = useState(false);
-//   const [totalHours, setTotalHours] = useState(0); // in hours
-//   const [lastCheckIn, setLastCheckIn] = useState('--:--');
-//   const [lastCheckOut, setLastCheckOut] = useState('--:--');
-
-//   // Fake weekly data for the chart
-//   const weeklyData = [
-//     { day: 'M', hours: 8 },
-//     { day: 'T', hours: 6.5 },
-//     { day: 'W', hours: 9 },
-//     { day: 'T', hours: 8 },
-//     { day: 'F', hours: 5 }, // Today
-//     { day: 'S', hours: 0 },
-//     { day: 'S', hours: 0 },
-//   ];
-
-//   // Function to handle clicking the button
-//   const handlePunch = () => {
-//     const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    
-//     if (!isCheckedIn) {
-//       // User is punching IN
-//       setIsCheckedIn(true);
-//       setLastCheckIn(now);
-//     } else {
-//       // User is punching OUT
-//       setIsCheckedIn(false);
-//       setLastCheckOut(now);
-//       setTotalHours(prev => prev + 4); // Fake adding hours for demo
-//     }
-//   };
-
-//   return (
-//     <div className="attendance-container">
-      
-//       {/* Header */}
-//       <div className="attendance-header">
-//         <h2>Mark Attendance</h2>
-//         <p>{new Date().toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
-//       </div>
-
-//       {/* --- Center Big Button Section --- */}
-//       <div className="punch-section">
-        
-//         {/* The Circular Animation Container */}
-//         <div className={`punch-ring ${isCheckedIn ? 'active-ring' : ''}`}>
-//           <button 
-//             className={`punch-btn ${isCheckedIn ? 'btn-out' : 'btn-in'}`}
-//             onClick={handlePunch}
-//           >
-//             {isCheckedIn ? "Punch Out" : "Punch In"}
-//             {/* Timer shown inside button if checked in */}
-//             {isCheckedIn && <span className="timer-text">04:23:10</span>}
-//           </button>
-//         </div>
-
-//         {/* --- Under the button Stats --- */}
-//         <div className="punch-stats">
-//           <div className="stat-item">
-//             <span className="label">Check In</span>
-//             <span className="value">{lastCheckIn}</span>
-//           </div>
-//           <div className="stat-item">
-//             <span className="label">Check Out</span>
-//             <span className="value">{lastCheckOut}</span>
-//           </div>
-//           <div className="stat-item">
-//             <span className="label">Total Hrs</span>
-//             <span className="value">{totalHours} Hrs</span>
-//           </div>
-//         </div>
-
-//         {/* Small location text */}
-//         <p className="location-text">📍 Location: 192.168.1.15 (Office HQ)</p>
-//       </div>
-
-//       {/* --- Weekly Chart Section --- */}
-//       <div className="chart-section">
-//         <h3>Weekly Activity</h3>
-//         <div className="bar-chart">
-//           {weeklyData.map((data, index) => (
-//             <div key={index} className="bar-column">
-//               {/* The bar height is dynamic based on hours (max 10 hours for 100%) */}
-//               <div 
-//                 className="bar-fill" 
-//                 style={{ height: `${data.hours * 10}%` }}
-//                 title={`${data.hours} hours`}
-//               ></div>
-//               <span className="bar-label">{data.day}</span>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-
-//     </div>
-//   );
-// };
-
-// export default Attendance;
-
-
+/* src/pages/Attendance.js */
 import React, { useState, useEffect } from 'react';
 import './Attendance.css';
 import BackButton from '../components/BackButton';
@@ -122,7 +16,7 @@ const Attendance = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // Fake weekly data
+  // Fake weekly data with different statuses
   const weeklyData = [
     { day: 'Mon', hours: 8.5, status: 'ontime' },
     { day: 'Tue', hours: 7.0, status: 'early' },
@@ -183,7 +77,7 @@ const Attendance = () => {
 
           <div className="status-indicator">
             <span className={`status-dot ${isCheckedIn ? 'online' : 'offline'}`}></span>
-            Current Status: <strong>{isCheckedIn ? "Working" : "Not Checked In"}</strong>
+            <span>Current Status: <strong>{isCheckedIn ? "Working" : "Not Checked In"}</strong></span>
           </div>
         </div>
 
@@ -207,7 +101,7 @@ const Attendance = () => {
         <div className="location-footer">
           <span className="location-icon">📍</span>
           <span>Detected Location: <strong>Headquarters (192.168.1.15)</strong></span>
-          <span className="secure-badge">🔒 Secure Connection</span>
+          <span className="secure-badge">🔒 Secure</span>
         </div>
       </div>
 
@@ -233,16 +127,16 @@ const Attendance = () => {
 
         <div className="chart-legend">
           <div className="legend-item"><span className="dot ontime"></span>On Time</div>
-          <div className="legend-item"><span className="dot early"></span>Early Leave</div>
+          <div className="legend-item"><span className="dot early"></span>Early</div>
         </div>
 
         <div className="summary-box">
           <h4>Weekly Summary</h4>
-          <p>You have worked <strong>38 hours</strong> this week.</p>
+          <p>You have worked <strong>38 hours</strong> this week. Great consistency!</p>
           <div className="progress-bar-bg">
             <div className="progress-bar-val" style={{width: '85%'}}></div>
           </div>
-          <small>Target: 45 Hours</small>
+          <small style={{color: 'var(--text-muted)'}}>Target: 45 Hours</small>
         </div>
       </div>
 

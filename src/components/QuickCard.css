@@ -1,4 +1,4 @@
-/* src/components/QuickCard.css */
+/* src/components/QuickCard.css - Virtual Verse Dark Theme */
 
 .quick-card {
   /* Layout and Design */
@@ -7,36 +7,63 @@
   padding: 20px;
   border-radius: 15px;
   margin-bottom: 20px;
-  /* Glass Effect */
-  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
-  backdrop-filter: blur(10px); /* The magic blur effect */
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  
+  /* UPDATED: Dark Glass Effect (Obsidian style) */
+  background: rgba(20, 20, 20, 0.6); /* Dark semi-transparent */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  
+  /* UPDATED: Subtle dark border */
+  border: 1px solid var(--border-color);
+  
+  /* UPDATED: Deep shadow for depth */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  
   cursor: pointer;
   /* Soft Animation */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .quick-card:hover {
-  transform: translateY(-5px); /* Soft animation */
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  
+  /* UPDATED: Card lights up slightly on hover */
+  background: var(--bg-card-hover);
+  
+  /* UPDATED: Border turns Teal */
+  border-color: var(--primary-color);
+  
+  /* UPDATED: Outer Teal Glow */
+  box-shadow: 0 10px 20px var(--shadow-color);
 }
 
 .card-icon {
   font-size: 2rem;
   margin-right: 15px;
+  
+  /* UPDATED: Icons are now the Logo Teal */
+  color: var(--primary-color);
+  
+  /* Optional: Adds a tiny neon glow to the icon */
+  filter: drop-shadow(0 0 5px rgba(0, 178, 202, 0.4));
 }
 
 .card-title {
   font-size: 0.9rem;
-  color: var(--text-dark);
+  
+  /* UPDATED: Muted Grey (readable on black) */
+  color: var(--text-muted);
+  
   margin: 0;
-  opacity: 0.7;
+  font-weight: 500;
 }
 
 .card-value {
   font-size: 1.8rem;
-  color: var(--secondary-color);
+  
+  /* UPDATED: Pure White text */
+  color: var(--text-main);
+  
   margin: 5px 0 0 0;
   font-weight: 700;
 }
